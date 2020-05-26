@@ -24,6 +24,7 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-navigation": "*"
+    "@react-navigation/native": "*",
+    "@hecom/navigation": "*"
   }
 }

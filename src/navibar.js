@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Platform, Text, TouchableOpacity, Image, Keyboard, StyleSheet, BackHandler, Dimensions, StatusBar } from 'react-native';
-import { withNavigation } from 'react-navigation'
+import Navigation from '@hecom/navigation';
 import styles from './style';
 import { forceInset, getSafeAreaInset } from './safearea';
 
@@ -32,7 +32,7 @@ export class InnerNaviBar extends React.PureComponent {
             left: null,
             right: null,
         };
-        this._didFocusSubscription = props.navigation && props.navigation.addListener('didFocus',
+        this._didFocusSubscription = this.props.navigation && this.props.navigation.addListener('didFocus',
             () => BackHandler.addEventListener('hardwareBackPress', this._clickBack));
     }
 
@@ -43,8 +43,8 @@ export class InnerNaviBar extends React.PureComponent {
     }
 
     componentWillUnmount() {
-        this._didFocusSubscription && this._didFocusSubscription.remove();
-        this._willBlurSubscription && this._willBlurSubscription.remove();
+        this._didFocusSubscription && this.props.navigation.removeListener(this._didFocusSubscription);
+        this._willBlurSubscription && this.props.navigation.removeListener(this._willBlurSubscription);
         Dimensions.removeEventListener('change', this._onWindowChanged);
     }
 
@@ -238,4 +238,7 @@ export class InnerNaviBar extends React.PureComponent {
     _canDisplay = (item) => typeof item === 'string' || typeof item === 'number';
 }
 
-export default withNavigation(InnerNaviBar);
+export default function(props) {
+    const navigation = Navigation.get();
+    return <InnerNaviBar {...props} navigation={navigation} />;
+  }

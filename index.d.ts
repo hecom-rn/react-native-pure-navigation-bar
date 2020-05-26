@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ImageSourcePropType, StyleProp, TextStyle, ImageStyle, ViewStyle } from 'react-native';
-import { SafeAreaViewForceInsetValue } from 'react-navigation';
+import { SafeAreaViewForceInsetValue} from '@react-navigation/native';
 
 export const DEFAULT_NAVBAR_HEIGHT: number;
 export const GOBACK_BUTTON: string;
