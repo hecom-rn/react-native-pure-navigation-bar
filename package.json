@@ -25,6 +25,5 @@
     "react": "*",
     "react-native": "*",
     "@react-navigation/native": "*",
-    "@hecom/navigation": "*"
   }
 }

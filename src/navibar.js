@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Platform, Text, TouchableOpacity, Image, Keyboard, StyleSheet, BackHandler, Dimensions, StatusBar } from 'react-native';
-import Navigation from '@hecom/navigation';
+import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 import { forceInset, getSafeAreaInset } from './safearea';
 
@@ -239,6 +239,6 @@ export class InnerNaviBar extends React.PureComponent {
 }
 
 export default function(props) {
-    const navigation = Navigation.get();
+    const navigation = useNavigation();
     return <InnerNaviBar {...props} navigation={navigation} />;
   }
