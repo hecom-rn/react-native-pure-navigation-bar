@@ -39,10 +39,8 @@ export class InnerNaviBar extends React.PureComponent {
     }
 
     componentDidMount() {
-        this._willBlurSubscription = this.props.navigation && this.props.navigation.addListener('beforeRemove',
-            (e) => {
-                BackHandler.removeEventListener('hardwareBackPress', this._clickBack)
-        });
+        this._willBlurSubscription = this.props.navigation && this.props.navigation.addListener('blur',
+            () => BackHandler.removeEventListener('hardwareBackPress', this._clickBack));
         Dimensions.addEventListener('change', this._onWindowChanged);
     }
 
