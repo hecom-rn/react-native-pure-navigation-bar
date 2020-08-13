@@ -1,5 +1,5 @@
 {
-  "name": "react-native-pure-navigation-bar",
+  "name": "@hecom/react-native-pure-navigation-bar",
   "version": "1.5.0",
   "private": false,
   "description": "A navigation bar in React-Native.",
@@ -7,7 +7,7 @@
   "types": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaoxiaosong/react-native-pure-navigation-bar.git"
+    "url": "https://github.com/hecom-rn/react-native-pure-navigation-bar.git"
   },
   "keywords": [
     "react native",
@@ -17,10 +17,9 @@
   "author": "Xiaosong Gao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaoxiaosong/react-native-pure-navigation-bar/issues",
-    "email": "gaoxiaosong06@gmail.com"
+    "url": "https://github.com/hecom-rn/react-native-pure-navigation-bar/issues",
   },
-  "homepage": "https://github.com/gaoxiaosong/react-native-pure-navigation-bar#readme",
+  "homepage": "https://github.com/hecom-rn/react-native-pure-navigation-bar#readme",
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
