@@ -16,8 +16,11 @@
   ],
   "author": "hecom",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
-    "url": "https://github.com/hecom-rn/react-native-pure-navigation-bar/issues",
+    "url": "https://github.com/hecom-rn/react-native-pure-navigation-bar/issues"
   },
   "homepage": "https://github.com/hecom-rn/react-native-pure-navigation-bar#readme",
   "peerDependencies": {
