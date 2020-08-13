@@ -1,4 +1,4 @@
-# react-native-pure-navigation-bar
+# @hecom/react-native-pure-navigation-bar
 
 [![npm version](https://img.shields.io/npm/v/@hecom/react-native-pure-navigation-bar.svg?style=flat)](https://www.npmjs.com/package/@hecom/react-native-pure-navigation-bar)
 [![Build Status](https://travis-ci.org/hecom-rn/react-native-pure-navigation-bar.svg?branch=master)](https://travis-ci.org/hecom-rn/react-native-pure-navigation-bar)
@@ -59,13 +59,13 @@ It supports:
 Install by Yarn:
 
 ```shell
-yarn add react-native-pure-navigation-bar
+yarn add @hecom/react-native-pure-navigation-bar
 ```
 
 Install by NPM:
 
 ```shell
-npm install --save react-native-pure-navigation-bar
+npm install --save @hecom/react-native-pure-navigation-bar
 ```
 
 ## Usage
@@ -73,7 +73,7 @@ npm install --save react-native-pure-navigation-bar
 First import in the file:
 
 ```jsx
-import NaviBar from 'react-native-pure-navigation-bar';
+import NaviBar from '@hecom/react-native-pure-navigation-bar';
 ```
 
 Then add component in `render()` function:
@@ -109,7 +109,7 @@ You can change the navigation bar settings at the startup, include navigation ba
 You can set options like this:
 
 ```jsx
-import {InnerNaviBar} from 'react-native-pure-navigation-bar';
+import {InnerNaviBar} from '@hecom/react-native-pure-navigation-bar';
 
 InnerNaviBar.defaultProps.isTranslucent = true;
 InnerNaviBar.defaultProps.style.titleContainer = {...};
@@ -170,7 +170,7 @@ All the key you can customize in Global or Custom settings list below:
 
 ## FAQ
 
-You can see [Wiki](https://github.com/gaoxiaosong/react-native-pure-navigation-bar/wiki/) for questions. And if not found, you can commit a issue to me.
+You can see [Wiki](https://github.com/hecom-rn/react-native-pure-navigation-bar/wiki) for questions. And if not found, you can commit a issue to me.
 
 ## Example Project
 
