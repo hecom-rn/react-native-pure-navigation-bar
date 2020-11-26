@@ -25,7 +25,7 @@ export function forceInset(top, right, bottom, left) {
 }
 
 function isIphoneX() {
-    const {width, height} = Dimensions.get('window');
+    const { width, height } = Dimensions.get('window');
     const edge = Math.max(width, height);
     return (
         Platform.OS === 'ios' &&
@@ -33,7 +33,10 @@ function isIphoneX() {
         !Platform.isTVOS &&
         (
             edge === 812 || // X + XS
-            edge === 896 // XR + XS Max
+            edge === 896 ||  // XR + XS Max
+            edge === 926 || // 12 por max 
+            edge === 844 || // 12 pro 12
+            edge === 780 // 12 mini
         )
     );
 }
