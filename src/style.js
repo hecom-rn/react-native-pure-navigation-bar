@@ -58,6 +58,10 @@ export default StyleSheet.create({
         color: 'black',
         fontSize: 17,
     },
+    buttonDisableText: {
+        color: '#aaaaaa',
+        fontSize: 17,
+    },
     gobackView: {
         flexDirection: 'row',
         justifyContent: 'center',
