@@ -153,6 +153,17 @@ export class InnerNaviBar extends React.PureComponent {
     };
 
     _renderButton = (upperType, item, index) => {
+        const lowerType = upperType.toLowerCase();
+        const elementProps = this.props[lowerType + 'ElementDisable'];
+        let isDisable = false;
+        if (elementProps) {
+            if (Array.isArray(elementProps)) {
+                elementProps = (elementProps.length() > index) ? elementProps[index] : false;
+            } else if (typeof elementProps === "boolean") {
+                isDisable = elementProps;
+            }
+        }
+
         const func = this._clickButton.bind(this, upperType, item, index);
         const specStyle = {
             height: this.props.navbarHeight,
@@ -175,16 +186,18 @@ export class InnerNaviBar extends React.PureComponent {
         ) : (
             <View style={this._combineStyle('buttonView', specStyle)}>
                 {this._canDisplay(item) ? (
-                    <Text style={this._combineStyle('buttonText')}>
+                    <Text style={this._combineStyle(isDisable ? 'buttonDisableText' : 'buttonText')}>
                         {'' + item}
                     </Text>
                 ) : item}
             </View>
         );
         return (
-            <TouchableOpacity key={index} onPress={func}>
-                {button}
-            </TouchableOpacity>
+            isDisable ? button : (
+                <TouchableOpacity key={index} onPress={func}>
+                    {button}
+                </TouchableOpacity>
+            )
         );
     };
 
