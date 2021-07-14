@@ -169,7 +169,7 @@ export class InnerNaviBar extends React.PureComponent {
             height: this.props.navbarHeight,
         };
         const button = item === GOBACK_BUTTON ? (
-            <View style={this._combineStyle('gobackView', specStyle)}>
+            <View style={this._combineStyle('gobackView', specStyle)} testID={(this.props.title || '') + '返回'}>
                 <Image
                     source={this.props.gobackImage}
                     style={this._combineStyle('gobackImage')}
@@ -184,7 +184,7 @@ export class InnerNaviBar extends React.PureComponent {
                 )}
             </View>
         ) : (
-            <View style={this._combineStyle('buttonView', specStyle)}>
+            <View style={this._combineStyle('buttonView', specStyle)} testID={(this.props.title || '') + item}>
                 {this._canDisplay(item) ? (
                     <Text style={this._combineStyle(isDisable ? 'buttonDisableText' : 'buttonText')}>
                         {'' + item}
