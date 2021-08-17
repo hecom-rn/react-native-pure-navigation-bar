@@ -22,6 +22,7 @@ interface SafeAreaInset {
 
 export function getSafeAreaInset(isLandscape?: boolean): SafeAreaInset;
 export function forceInset(top: number, right: number, bottom: number, left: number): SafeOptionsType;
+export function isIphoneX(): boolean;
 
 interface InnerStyle {
     safeView?: StyleProp<ViewStyle>;

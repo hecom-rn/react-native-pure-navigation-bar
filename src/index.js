@@ -1,5 +1,5 @@
 import NaviBar, { InnerNaviBar, DEFAULT_NAVBAR_HEIGHT, GOBACK_BUTTON, GOBACK_IMAGE } from './navibar';
-import { getSafeAreaInset, forceInset } from './safearea';
+import { getSafeAreaInset, forceInset, isIphoneX } from './safearea';
 
 export default NaviBar;
 
@@ -10,4 +10,5 @@ export {
     GOBACK_IMAGE,
     getSafeAreaInset,
     forceInset,
+    isIphoneX,
 };

@@ -24,7 +24,7 @@ export function forceInset(top, right, bottom, left) {
     };
 }
 
-function isIphoneX() {
+export function isIphoneX() {
     const { width, height } = Dimensions.get('window');
     const edge = Math.max(width, height);
     return (
