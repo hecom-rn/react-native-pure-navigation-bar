@@ -11,6 +11,7 @@ export const GOBACK_IMAGE = require('./image/nav_back.png');
 export class InnerNaviBar extends React.PureComponent {
     static defaultProps = {
         title: '',
+        testIDPrefix: '',
         titleCenter: true,
         hasSeperatorLine: true,
         leftElement: GOBACK_BUTTON,
@@ -35,7 +36,7 @@ export class InnerNaviBar extends React.PureComponent {
         this._didFocusSubscription = this.props.navigation && this.props.navigation.addListener('focus',
             () => {
                 BackHandler.addEventListener('hardwareBackPress', this._clickBack)
-        });
+            });
     }
 
     componentDidMount() {
@@ -169,7 +170,7 @@ export class InnerNaviBar extends React.PureComponent {
             height: this.props.navbarHeight,
         };
         const button = item === GOBACK_BUTTON ? (
-            <View style={this._combineStyle('gobackView', specStyle)} testID={(this.props.title || '') + '返回'}>
+            <View style={this._combineStyle('gobackView', specStyle)} testID={(this.props.testIDPrefix || '') + '返回'}>
                 <Image
                     source={this.props.gobackImage}
                     style={this._combineStyle('gobackImage')}
@@ -184,7 +185,7 @@ export class InnerNaviBar extends React.PureComponent {
                 )}
             </View>
         ) : (
-            <View style={this._combineStyle('buttonView', specStyle)} testID={ (typeof item === 'string' && typeof this.props.title === 'string' ) ? (this.props.title + item) : undefined }>
+            <View style={this._combineStyle('buttonView', specStyle)} testID={ (typeof item === 'string') ? ((this.props.testIDPrefix || '') + item) : undefined }>
                 {this._canDisplay(item) ? (
                     <Text style={this._combineStyle(isDisable ? 'buttonDisableText' : 'buttonText')}>
                         {'' + item}
@@ -257,4 +258,4 @@ export class InnerNaviBar extends React.PureComponent {
 export default function(props) {
     const navigation = useNavigation();
     return <InnerNaviBar {...props} navigation={navigation} />;
-  }
+}
