@@ -184,7 +184,7 @@ export class InnerNaviBar extends React.PureComponent {
                 )}
             </View>
         ) : (
-            <View style={this._combineStyle('buttonView', specStyle)} testID={(this.props.title || '') + item}>
+            <View style={this._combineStyle('buttonView', specStyle)} testID={ (typeof item === 'string' && typeof this.props.title === 'string' ) ? (this.props.title + item) : undefined }>
                 {this._canDisplay(item) ? (
                     <Text style={this._combineStyle(isDisable ? 'buttonDisableText' : 'buttonText')}>
                         {'' + item}
