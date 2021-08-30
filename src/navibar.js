@@ -169,8 +169,9 @@ export class InnerNaviBar extends React.PureComponent {
         const specStyle = {
             height: this.props.navbarHeight,
         };
+        const prefix = (!!this.props.testIDPrefix) ? this.props.testIDPrefix : ((typeof this.props.title === 'string') ? this.props.title : '');
         const button = item === GOBACK_BUTTON ? (
-            <View style={this._combineStyle('gobackView', specStyle)} testID={(this.props.testIDPrefix || '') + '返回'}>
+            <View style={this._combineStyle('gobackView', specStyle)} testID={prefix + '返回'}>
                 <Image
                     source={this.props.gobackImage}
                     style={this._combineStyle('gobackImage')}
@@ -185,7 +186,7 @@ export class InnerNaviBar extends React.PureComponent {
                 )}
             </View>
         ) : (
-            <View style={this._combineStyle('buttonView', specStyle)} testID={ (typeof item === 'string') ? ((this.props.testIDPrefix || '') + item) : undefined }>
+            <View style={this._combineStyle('buttonView', specStyle)} testID={ (typeof item === 'string') ? (prefix + item) : undefined }>
                 {this._canDisplay(item) ? (
                     <Text style={this._combineStyle(isDisable ? 'buttonDisableText' : 'buttonText')}>
                         {'' + item}
