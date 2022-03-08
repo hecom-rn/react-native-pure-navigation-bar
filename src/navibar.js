@@ -109,7 +109,7 @@ export class InnerNaviBar extends React.PureComponent {
         return (
             <View style={this._combineStyle('container', {height: this.props.navbarHeight})}>
                 {this._renderButtons('Left', edge)}
-                <View style={this._combineStyle('titleContainer')}>
+                <View style={[this._combineStyle('titleContainer'), !edge ? { position: 'absolute', left: 15, right: 15, top: 0, bottom: 0} : {}]}>
                     {this._renderTitleView()}
                 </View>
                 {this._renderButtons('Right', edge)}
