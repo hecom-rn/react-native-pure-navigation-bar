@@ -223,7 +223,7 @@ export class InnerNaviBar extends React.PureComponent {
         }
         this.props.autoCloseKeyboard && Keyboard.dismiss();
         const clickKey = 'on' + upperType;
-        const doDefaultAction = this.props[clickKey] && this.props[clickKey](index);
+        const doDefaultAction = this.props[clickKey] && this.props[clickKey](index, item);
         if (item === GOBACK_BUTTON && doDefaultAction !== false) {
             this.props.navigation && this.props.navigation.goBack();
         }
