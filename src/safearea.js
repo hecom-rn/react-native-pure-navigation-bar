@@ -36,6 +36,8 @@ export function isIphoneX() {
             edge === 896 ||  // XR + XS Max
             edge === 926 || // 12 por max 
             edge === 844 || // 12 pro 12
+            edge === 932 || // 14 pro max 
+            edge === 852 || // 14 pro
             edge === 780 // 12 mini
         )
     );
