@@ -49,8 +49,8 @@ export interface NaviBarProps {
     leftElement?: string | number | React.ReactElement | Array<string | number | React.ReactElement>;
     rightElement?: string | number | React.ReactElement | Array<string | number | React.ReactElement>;
     rightElementDiable?: boolean | Array<boolean>;
-    onLeft?: (index: number) => boolean | void;
-    onRight?: (index: number) => boolean | void;
+    onLeft?: (index: number, item: any) => boolean | void;
+    onRight?: (index: number, item: any) => boolean | void;
     autoCloseKeyboard?: boolean;
     autoHardwareBack?: boolean;
     disableLock?: boolean;
