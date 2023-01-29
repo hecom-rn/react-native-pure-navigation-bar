@@ -75,7 +75,7 @@ export class InnerNaviBar extends React.PureComponent {
                     paddingLeft: func('left'),
                     paddingRight: func('right'),
                     paddingBottom: func('bottom'),
-                    height: func('top') + this.props.navbarHeight,
+                    height: (func('top') || 0) + this.props.navbarHeight,
                 }),
                 ...seperatorLineStyle,
             ];
