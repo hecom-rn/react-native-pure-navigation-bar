@@ -47,6 +47,8 @@ export interface NaviBarProps {
     titleCenter?: boolean;
     hasSeperatorLine?: boolean;
     leftElement?: string | number | React.ReactElement | Array<string | number | React.ReactElement>;
+    titleLeftElement?: React.ReactElement;
+    titleRightElement?: React.ReactElement;
     rightElement?: string | number | React.ReactElement | Array<string | number | React.ReactElement>;
     rightElementDiable?: boolean | Array<boolean>;
     onLeft?: (index: number, item: any) => boolean | void;
