@@ -30,7 +30,7 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 15,
+        paddingHorizontal: 0,
     },
     title: {
         fontSize: 18,
@@ -53,6 +53,18 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 8,
+    },
+    leftButtonView: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingRight: 15,
+    },
+    rightButtonView: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingLeft: 15,
     },
     buttonText: {
         color: 'black',
