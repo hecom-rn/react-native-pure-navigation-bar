@@ -58,13 +58,13 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingRight: 15,
+        paddingRight: 13,
     },
     rightButtonView: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingLeft: 15,
+        paddingLeft: 13,
     },
     buttonText: {
         color: 'black',
