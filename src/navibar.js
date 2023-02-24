@@ -93,7 +93,7 @@ export class InnerNaviBar extends React.PureComponent {
     }
 
     _renderView = () => {
-        const {titleCenter} = this.props;
+        const {titleCenter, absTitle} = this.props;
         let edge;
         if (titleCenter) {
             const noLeft = this.state.left === null;
@@ -109,7 +109,13 @@ export class InnerNaviBar extends React.PureComponent {
         return (
             <View style={this._combineStyle('container', {height: this.props.navbarHeight})}>
                 {this._renderButtons('Left', edge)}
-                <View style={[!edge ? { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0} : {}, this._combineStyle('titleContainer')]}>
+                <View style={[!edge || absTitle ? {
+                    position: 'absolute',
+                    left: edge || 0,
+                    right: edge || 0,
+                    top: 0,
+                    bottom: 0
+                } : {}, this._combineStyle('titleContainer')]}>
                     {this._renderTitleView()}
                 </View>
                 {this._renderButtons('Right', edge)}
@@ -188,7 +194,8 @@ export class InnerNaviBar extends React.PureComponent {
                 )}
             </View>
         ) : (
-            <View style={this._combineStyle(lowerType+'ButtonView', specStyle)} testID={ (typeof item === 'string') ? (prefix + item) : undefined }>
+            <View style={this._combineStyle(lowerType + 'ButtonView', specStyle)}
+                  testID={(typeof item === 'string') ? (prefix + item) : undefined}>
                 {this._canDisplay(item) ? (
                     <Text style={this._combineStyle(isDisable ? 'buttonDisableText' : 'buttonText')}>
                         {'' + item}
@@ -258,7 +265,7 @@ export class InnerNaviBar extends React.PureComponent {
     _canDisplay = (item) => typeof item === 'string' || typeof item === 'number';
 }
 
-export default function(props) {
+export default function (props) {
     const navigation = useNavigation();
-    return <InnerNaviBar {...props} navigation={navigation} />;
+    return <InnerNaviBar {...props} navigation={navigation}/>;
 }
