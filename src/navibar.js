@@ -127,11 +127,13 @@ export class InnerNaviBar extends React.PureComponent {
         const {title, titleLeftElement, titleRightElement} = this.props;
         if (this._canDisplay(title)) {
             return (
-                <Text style={this._combineStyle('title')} numberOfLines={1}>
+                <View style={{ flexDirection: 'row',alignItems:'center', alignContent:'center' }}>
                     {titleLeftElement}
-                    {'' + title}
+                    <Text style={this._combineStyle('title')} numberOfLines={1}>
+                        {'' + title}
+                    </Text>
                     {titleRightElement}
-                </Text>
+                </View>
             );
         } else {
             return title;
