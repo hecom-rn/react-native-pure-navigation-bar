@@ -6,7 +6,7 @@ import { forceInset, getSafeAreaInset } from './safearea';
 
 export const DEFAULT_NAVBAR_HEIGHT = 44;
 export const GOBACK_BUTTON = '__gobackbutton__';
-export const GOBACK_IMAGE = require('./image/nav_back.png');
+// export const GOBACK_IMAGE = require('./image/nav_back.png');
 
 export class InnerNaviBar extends React.PureComponent {
     static defaultProps = {
@@ -18,7 +18,7 @@ export class InnerNaviBar extends React.PureComponent {
         rightElement: null,
         autoCloseKeyboard: true,
         autoHardwareBack: true,
-        gobackImage: GOBACK_IMAGE,
+        gobackImage: require('./image/nav_back.png'),
         safeOptions: forceInset(1, 1, 0, 1),
         navbarHeight: DEFAULT_NAVBAR_HEIGHT,
         style: {},

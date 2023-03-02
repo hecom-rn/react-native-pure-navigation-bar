@@ -4,7 +4,6 @@ import { SafeAreaViewForceInsetValue} from '@react-navigation/native';
 
 export const DEFAULT_NAVBAR_HEIGHT: number;
 export const GOBACK_BUTTON: string;
-export const GOBACK_IMAGE: ImageSourcePropType;
 
 interface SafeOptionsType {
     top: SafeAreaViewForceInsetValue;
