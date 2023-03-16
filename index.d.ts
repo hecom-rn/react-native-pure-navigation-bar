@@ -19,7 +19,7 @@ interface SafeAreaInset {
     left: number;
 }
 
-export function getSafeAreaInset(isLandscape?: boolean): SafeAreaInset;
+export function getSafeAreaInset(isLandscape?: boolean, isTranslucent?: boolean): SafeAreaInset;
 export function forceInset(top: number, right: number, bottom: number, left: number): SafeOptionsType;
 export function isIphoneX(): boolean;
 
