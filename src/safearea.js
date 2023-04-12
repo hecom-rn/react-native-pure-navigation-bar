@@ -1,5 +1,12 @@
 import { Dimensions, Platform, StatusBar, NativeModules } from 'react-native';
     
+const type1 = ['iPhone12','iPhone12Pro','iPhone13','iPhone13Pro','iPhone14','iPhone12ProMax','iPhone13ProMax','iPhone14Plus']; // 47pt
+const type2 = ['iPhone14Pro', 'iPhone14ProMax']; // 59pt
+const type3 = ['iPhoneXSMax','iPhone11ProMax', 'iPhoneX','iPhoneXS','iPhone11Pro'];  // 44pt
+const type4 = ['iPhoneXR','iPhone11']; // 48pt
+const type5 = ['iPhone12mini', 'iPhone13mini']; // 50pt
+const type = [type1, type2, type3, type4, type5];
+
 export function getSafeAreaInset(isLandscape = undefined, isTranslucent = false) {
     if (isLandscape === undefined) {
         const {width, height} = Dimensions.get('window');
@@ -9,11 +16,6 @@ export function getSafeAreaInset(isLandscape = undefined, isTranslucent = false)
     if (isIphoneX()) {
         let deviceName = NativeModules.RNDeviceInfo?.model || 'iPhone13';
         deviceName = deviceName.replace(/\s*/g,"");
-        const type1 = ['iPhone12','iPhone12Pro','iPhone13','iPhone13Pro','iPhone14','iPhone12ProMax','iPhone13ProMax','iPhone14Plus']; // 47pt
-        const type2 = ['iPhone14Pro', 'iPhone14ProMax']; // 59pt
-        const type3 = ['iPhoneXSMax','iPhone11ProMax', 'iPhoneX','iPhoneXS','iPhone11Pro'];  // 44pt
-        const type4 = ['iPhoneXR','iPhone11']; // 48pt
-        const type5 = ['iPhone12mini','iPhone13mini']; // 50pt
         if (type1.includes(deviceName)) {
             return isLandscape ? inset(0, 47, 21, 47) : inset(47, 0, 34, 0);
         } else if (type2.includes(deviceName)) {
@@ -44,20 +46,13 @@ export function forceInset(top, right, bottom, left) {
 }
 
 export function isIphoneX() {
-    const { width, height } = Dimensions.get('window');
-    const edge = Math.max(width, height);
+    let deviceName = NativeModules.RNDeviceInfo?.model || '';
+    deviceName = deviceName.replace(/\s*/g, "");
+    const models = type.flat(1);
     return (
         Platform.OS === 'ios' &&
         !Platform.isPad &&
         !Platform.isTVOS &&
-        (
-            edge === 812 || // X + XS
-            edge === 896 ||  // XR + XS Max
-            edge === 926 || // 12 pro max + 14 + 14 plus
-            edge === 844 || // 12 pro 12
-            edge === 932 || // 14 pro max 
-            edge === 852 || // 14 pro
-            edge === 780 // 12 mini
-        )
+        models.includes(deviceName)
     );
 }
