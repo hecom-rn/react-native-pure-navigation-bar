@@ -7,7 +7,7 @@ const type4 = ['iPhoneXR','iPhone11']; // 48pt
 const type5 = ['iPhone12mini', 'iPhone13mini']; // 50pt  
 const type6 = ['iPhone16Pro', 'iPhone16ProMax'] // 62pt
 const typeUnKnow = ['iPhone']; // 新机型 59pt
-const type = [type1, type2, type3, type4, type5, typeUnKnow];
+const type = [type1, type2, type3, type4, type5, type6, typeUnKnow];
 
 export function getSafeAreaInset(isLandscape = undefined, isTranslucent = false) {
     if (isLandscape === undefined) {
