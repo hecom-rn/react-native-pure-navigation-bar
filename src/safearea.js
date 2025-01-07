@@ -1,7 +1,7 @@
 import { Dimensions, Platform, StatusBar, NativeModules } from 'react-native';
     
 const type1 = ['iPhone12','iPhone12Pro','iPhone13','iPhone13Pro','iPhone14','iPhone12ProMax','iPhone13ProMax','iPhone14Plus']; // 47pt
-const type2 = ['iPhone14Pro', 'iPhone14ProMax, iPhone15', 'iPhone15Pro', 'iPhone15Plus', 'iPhone15ProMax', 'iPhone16', 'iPhone16Plus']; // 59pt
+const type2 = ['iPhone14Pro', 'iPhone14ProMax', 'iPhone15', 'iPhone15Pro', 'iPhone15Plus', 'iPhone15ProMax', 'iPhone16', 'iPhone16Plus']; // 59pt
 const type3 = ['iPhoneXSMax','iPhone11ProMax', 'iPhoneX','iPhoneXS','iPhone11Pro'];  // 44pt
 const type4 = ['iPhoneXR','iPhone11']; // 48pt
 const type5 = ['iPhone12mini', 'iPhone13mini']; // 50pt  
