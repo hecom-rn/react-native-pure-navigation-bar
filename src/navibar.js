@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Platform, Text, TouchableOpacity, Image, Keyboard, StyleSheet, BackHandler, Dimensions, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from './style';
+import React from 'react';
+import { BackHandler, Dimensions, Image, Keyboard, Text, TouchableOpacity, View } from 'react-native';
 import { forceInset, getSafeAreaInset } from './safearea';
+import styles from './style';
 
 export const DEFAULT_NAVBAR_HEIGHT = 44;
 export const GOBACK_BUTTON = '__gobackbutton__';
@@ -35,14 +35,14 @@ export class InnerNaviBar extends React.PureComponent {
         };
         this._didFocusSubscription = this.props.navigation && this.props.navigation.addListener('focus',
             () => {
-                BackHandler.addEventListener('hardwareBackPress', this._clickBack)
+                this.backHandlerSubscription = BackHandler.addEventListener('hardwareBackPress', this._clickBack)
             });
     }
 
     componentDidMount() {
-        BackHandler.addEventListener('hardwareBackPress', this._clickBack);
+        this.backHandlerSubscription = BackHandler.addEventListener('hardwareBackPress', this._clickBack);
         this._willBlurSubscription = this.props.navigation && this.props.navigation.addListener('blur',
-            () => BackHandler.removeEventListener('hardwareBackPress', this._clickBack));
+            () => this.backHandlerSubscription?.remove());
         this.changeEmitter = Dimensions.addEventListener('change', this._onWindowChanged);
     }
 
@@ -53,7 +53,7 @@ export class InnerNaviBar extends React.PureComponent {
     }
 
     render() {
-        const {isAbsolute, isTranslucent, safeOptions, hasSeperatorLine} = this.props;
+        const { isAbsolute, isTranslucent, safeOptions, hasSeperatorLine } = this.props;
         const seperatorLineStyle = hasSeperatorLine ? this._combineStyle('seperator') : [];
         let style
         if (isAbsolute) {
@@ -93,7 +93,7 @@ export class InnerNaviBar extends React.PureComponent {
     }
 
     _renderView = () => {
-        const {titleCenter, absTitle} = this.props;
+        const { titleCenter, absTitle } = this.props;
         let edge;
         if (titleCenter) {
             const noLeft = this.state.left === null;
@@ -107,7 +107,7 @@ export class InnerNaviBar extends React.PureComponent {
             edge = undefined;
         }
         return (
-            <View style={this._combineStyle('container', {height: this.props.navbarHeight})}>
+            <View style={this._combineStyle('container', { height: this.props.navbarHeight })}>
                 {this._renderButtons('Left', edge)}
                 <View style={[(!edge || absTitle) && titleCenter ? {
                     position: 'absolute',
@@ -124,10 +124,10 @@ export class InnerNaviBar extends React.PureComponent {
     };
 
     _renderTitleView = () => {
-        const {title, titleLeftElement, titleRightElement} = this.props;
+        const { title, titleLeftElement, titleRightElement } = this.props;
         if (this._canDisplay(title)) {
             return (
-                <View style={{ flexDirection: 'row',alignItems:'center', alignContent:'center' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', alignContent: 'center' }}>
                     {titleLeftElement}
                     <Text style={this._combineStyle('title')} numberOfLines={1}>
                         {'' + title}
@@ -156,7 +156,7 @@ export class InnerNaviBar extends React.PureComponent {
             <View
                 key={lowerType + this[lowerType + 'Key']}
                 onLayout={this._onButtonsLayoutChanged.bind(this, lowerType)}
-                style={this._combineStyle(viewStyleKey, {minWidth: edge})}
+                style={this._combineStyle(viewStyleKey, { minWidth: edge })}
             >
                 {element.map(this._renderButton.bind(this, upperType))}
             </View>
@@ -197,7 +197,7 @@ export class InnerNaviBar extends React.PureComponent {
             </View>
         ) : (
             <View style={this._combineStyle(lowerType + 'ButtonView', specStyle)}
-                  testID={(typeof item === 'string') ? (prefix + item) : undefined}>
+                testID={(typeof item === 'string') ? (prefix + item) : undefined}>
                 {this._canDisplay(item) ? (
                     <Text style={this._combineStyle(isDisable ? 'buttonDisableText' : 'buttonText')}>
                         {'' + item}
@@ -214,7 +214,7 @@ export class InnerNaviBar extends React.PureComponent {
         );
     };
 
-    _onButtonsLayoutChanged = (lowerType, {nativeEvent: {layout: {width}}}) => {
+    _onButtonsLayoutChanged = (lowerType, { nativeEvent: { layout: { width } } }) => {
         this.setState({
             [lowerType]: width
         });
@@ -244,7 +244,7 @@ export class InnerNaviBar extends React.PureComponent {
     };
 
     _clickBack = () => {
-        const {leftElement, rightElement} = this.props;
+        const { leftElement, rightElement } = this.props;
         const lefts = Array.isArray(leftElement) ? leftElement : [leftElement];
         const rights = Array.isArray(rightElement) ? rightElement : [rightElement];
         const index = [...lefts, ...rights].findIndex(item => item === GOBACK_BUTTON);
@@ -269,5 +269,5 @@ export class InnerNaviBar extends React.PureComponent {
 
 export default function (props) {
     const navigation = useNavigation();
-    return <InnerNaviBar {...props} navigation={navigation}/>;
+    return <InnerNaviBar {...props} navigation={navigation} />;
 }
