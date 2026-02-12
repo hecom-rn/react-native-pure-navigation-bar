@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { BackHandler, Dimensions, Image, Keyboard, Text, TouchableOpacity, View } from 'react-native';
-import { forceInset, getSafeAreaInset } from './safearea';
 import styles from './style';
+import { forceInset, getSafeAreaInset } from './safearea';
 
 export const DEFAULT_NAVBAR_HEIGHT = 44;
 export const GOBACK_BUTTON = '__gobackbutton__';
@@ -207,7 +207,7 @@ export class InnerNaviBar extends React.PureComponent {
         );
         return (
             isDisable ? button : (
-                <TouchableOpacity key={index} onPress={func}>
+                <TouchableOpacity key={index} onPress={func} hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}>
                     {button}
                 </TouchableOpacity>
             )
