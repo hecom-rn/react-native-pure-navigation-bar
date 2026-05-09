@@ -11,7 +11,7 @@ export const GOBACK_BUTTON = '__gobackbutton__';
 export class InnerNaviBar extends React.PureComponent {
     static defaultProps = {
         title: '',
-        testIDPrefix: '',
+        testID: '',
         titleCenter: true,
         hasSeperatorLine: true,
         leftElement: GOBACK_BUTTON,
@@ -179,7 +179,7 @@ export class InnerNaviBar extends React.PureComponent {
         const specStyle = {
             height: this.props.navbarHeight,
         };
-        const prefix = (!!this.props.testIDPrefix) ? this.props.testIDPrefix : ((typeof this.props.title === 'string') ? this.props.title : '');
+        const prefix = (!!this.props.testID) ? this.props.testID : ((typeof this.props.title === 'string') ? this.props.title : '');
         const button = item === GOBACK_BUTTON ? (
             <View style={this._combineStyle('gobackView', specStyle)} testID={prefix + '返回'}>
                 <Image

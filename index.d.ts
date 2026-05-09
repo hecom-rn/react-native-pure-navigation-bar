@@ -42,7 +42,7 @@ interface InnerStyle {
 
 export interface NaviBarProps {
     title?: string | number | React.ReactElement;
-    testIDPrefix?: string;
+    testID?: string;
     titleCenter?: boolean;
     absTitle?: boolean;
     hasSeperatorLine?: boolean;
