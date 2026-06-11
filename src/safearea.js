@@ -1,4 +1,4 @@
-import { Dimensions, NativeModules, Platform, StatusBar } from 'react-native';
+import { Dimensions, Platform, StatusBar, NativeModules } from 'react-native';
     
 const type1 = ['iPhone12','iPhone12Pro','iPhone13','iPhone13Pro','iPhone14','iPhone12ProMax','iPhone13ProMax','iPhone14Plus','iPhone16e']; // 47pt
 const type2 = ['iPhone14Pro', 'iPhone14ProMax', 'iPhone15', 'iPhone15Pro', 'iPhone15Plus', 'iPhone15ProMax', 'iPhone16', 'iPhone16Plus', 'iPhone17', 'iPhone17Plus', 'iPhoneAir', 'iPhone17Air']; // 59pt
@@ -36,11 +36,7 @@ export function getSafeAreaInset(isLandscape = undefined, isTranslucent = false)
     } else if (Platform.OS === 'ios') {
         return inset(20, 0, 0, 0);
     } else {
-        const { height: screenH } = Dimensions.get('screen');
-        const { height: windowH } = Dimensions.get('window');
-        const navBarH = screenH - windowH - (StatusBar.currentHeight || 0);
-        const bottom = Math.max(navBarH, 0);
-        return inset(isTranslucent ? StatusBar.currentHeight : 0, 0, bottom, 0);
+        return inset(isTranslucent ? StatusBar.currentHeight : 0, 0, 0, 0);
     }
 }
 
