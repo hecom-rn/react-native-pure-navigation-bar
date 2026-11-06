@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { BackHandler, Dimensions, Image, Keyboard, Text, TouchableOpacity, View } from 'react-native';
-import { forceInset, getSafeAreaInset } from './safearea';
+import { SafeAreaConsumer } from 'react-native-safe-area-context';
+import { forceInset, getSafeAreaInset, resolveSafeAreaInsets } from './safearea';
 import styles from './style';
 
 export const DEFAULT_NAVBAR_HEIGHT = 44;
@@ -53,11 +54,19 @@ export class InnerNaviBar extends React.PureComponent {
     }
 
     render() {
+        return (
+            <SafeAreaConsumer>
+                {(contextInsets) => this._renderBar(contextInsets)}
+            </SafeAreaConsumer>
+        );
+    }
+
+    _renderBar = (contextInsets) => {
         const { isAbsolute, isTranslucent, safeOptions, hasSeperatorLine } = this.props;
         const seperatorLineStyle = hasSeperatorLine ? this._combineStyle('seperator') : [];
         let style
         if (isAbsolute) {
-            const safeArea = getSafeAreaInset(undefined, isTranslucent);
+            const safeArea = resolveSafeAreaInsets(contextInsets, isTranslucent);
             style = [
                 this._combineStyle('absoluteView', {
                     paddingTop: safeArea.top,
@@ -67,7 +76,7 @@ export class InnerNaviBar extends React.PureComponent {
                 ...seperatorLineStyle,
             ];
         } else if (safeOptions) {
-            const safeArea = getSafeAreaInset(undefined, isTranslucent);
+            const safeArea = resolveSafeAreaInsets(contextInsets, isTranslucent);
             const func = (pos) => safeOptions[pos] === 'always' ? safeArea[pos] : undefined;
             style = [
                 ...this._combineStyle('safeView', {
